@@ -5,5 +5,5 @@ from core.views import Redirection
 app_name = 'core'
 
 urlpatterns = [
-    url(r'^redirect/(?P<url>\w+)/$', Redirection.as_view(), name='redirect'),
+    url(r'^redirect/(?P<key>\w+)/$', Redirection.as_view(), name='redirect'),
 ]
