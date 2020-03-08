@@ -9,3 +9,4 @@ from keygen.models import Key
 @register(Key)
 class KeyAdmin(admin.ModelAdmin):
     list_display = ('val', 'is_used',)
+    list_filter = ('is_used', 'val',)
