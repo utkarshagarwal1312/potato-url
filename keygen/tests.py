@@ -8,4 +8,8 @@ from keygen.utils.key_pool import KeyPoolGenerator
 class UtilsTest(TestCase):
     def test_util_key_pool_generator(self):
         KeyPoolGenerator(number_of_keys=100).generate_keys()
-        self.assertEqual(Key.objects.all().count(), 100)
+        self.assertEqual(Key.objects.filter(is_used=False).count(), 80)
+
+    def test_util_key_pool_generator_for_1(self):
+        KeyPoolGenerator(number_of_keys=1).generate_keys()
+        self.assertEqual(Key.objects.filter(is_used=True).count(), 1)

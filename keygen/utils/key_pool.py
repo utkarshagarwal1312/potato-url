@@ -54,7 +54,7 @@ class KeyPoolGenerator:
     def generate_keys(self):
         generation_error = True
         for i in range(self.number_of_keys):
-            if i < self.in_memory_ratio * self.number_of_keys:
+            if i < max(self.in_memory_ratio * self.number_of_keys, 1):
                 unique_key = self._generate_unique_key(in_memory=True)
             else:
                 unique_key = self._generate_unique_key()
@@ -66,3 +66,4 @@ class KeyPoolGenerator:
         if generation_error:
             logger.exception("Key Generation could not create required keys.")
 
+        return generation_error
