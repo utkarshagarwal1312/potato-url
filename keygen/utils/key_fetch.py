@@ -14,4 +14,4 @@ def fetch_key():
     #  1. Call async for default KeyPoolGeneration
     #  2. Call async for shifting ratio of is_used=False to Memory
 
-    return Key.objects.get(val=key)
+    return Key.objects.get(val=key[0].decode("utf-8"))
