@@ -23,7 +23,11 @@ class Redirection(GenericAPIView):
     serializer_class = RedirectionSerializer
 
     def get(self, request, *args, **kwargs):
-        response = redirect('https://www.google.com')
+        try:
+            kum = KeyUrlMap.objects.get(key__val=kwargs.get('key'), is_active=True)
+        except KeyUrlMap.DoesNotExist:
+            return Response(status=404)
+        response = redirect(kum.url)
         return response
 
 
@@ -33,7 +37,6 @@ class CreateMapping(BaseGenericViewMixin):
     def post(self, request, *args, **kwargs):
         data = self._get_serialized_data(request.data)
         key = fetch_key()
-        print(key)
         kum = KeyUrlMap.objects.create(key=key, url=data.get('url'))
         serializer = self.get_serializer(kum)
         return Response(serializer.data)

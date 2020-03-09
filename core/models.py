@@ -12,4 +12,4 @@ class KeyUrlMap(models.Model):
     is_active = models.BooleanField(default=True)
 
     def get_potato_url(self):
-        return f"http://localhost:8000/redirect/{self.key.val}"
+        return f"http://localhost:8000/core/redirect/{self.key.val}"
