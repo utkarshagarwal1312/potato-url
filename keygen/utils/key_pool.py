@@ -1,8 +1,7 @@
+import redis
 import string
 import logging
-
 import random
-import redis
 from keygen.models import Key
 from potato_url.settings import REDIS_POOL
 
