@@ -103,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-REDIS_POOL = redis.ConnectionPool(host='localhost', port=6379, db=0)
+REDIS = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
